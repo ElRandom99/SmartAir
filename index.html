@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartAir - Monitor de Calidad de Aire</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="hwrap">
+      <div class="logo">
+        <div class="mark">💨</div>
+        <div>
+          <h1>Smart<span>Air</span></h1>
+          <p>Monitoreo Ambiental</p>
+        </div>
+      </div>
+      <div class="hspacer"></div>
+      <div class="status-pill">
+        <span id="status-dot" class="dot off"></span>
+        <span id="status-text">Conectando...</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav>
+    <button class="tab active">📊 Monitor en Vivo</button>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="view active">
+      <h2 class="sec-title">Estado del Aire en Tiempo Real</h2>
+      <p class="sec-sub">Métricas capturadas desde la red de sensores SmartAir</p>
+
+      <!-- METRICS GRID -->
+      <div class="grid g-3">
+
+        <!-- CARD CALIDAD -->
+        <div class="metric">
+          <div class="top">
+            <span class="label">Calidad del Aire</span>
+            <span class="emoji">🍃</span>
+          </div>
+          <div class="val">
+            <span id="val-calidad">--</span><span class="unit">%</span>
+          </div>
+          <div class="bar">
+            <i id="bar-calidad" style="width: 0%; background: var(--cyan);"></i>
+          </div>
+          <div class="sub">
+            <span>Índice General</span>
+            <span id="badge-calidad" class="badge">--</span>
+          </div>
+        </div>
+
+        <!-- CARD RS / RO -->
+        <div class="metric">
+          <div class="top">
+            <span class="label">Resistencia Gas (RS / RO)</span>
+            <span class="emoji">⚡</span>
+          </div>
+          <div class="val">
+            <span id="val-rsro">--</span>
+          </div>
+          <div class="bar">
+            <i id="bar-rsro" style="width: 0%; background: var(--purple);"></i>
+          </div>
+          <div class="sub">
+            <span>Relación de Resistencia</span>
+            <span class="muted">MQ Sensor</span>
+          </div>
+        </div>
+
+        <!-- CARD TIMESTAMP -->
+        <div class="metric">
+          <div class="top">
+            <span class="label">Última Actualización</span>
+            <span class="emoji">🕒</span>
+          </div>
+          <div class="val" style="font-size: 20px; margin-top: 10px;">
+            <span id="val-timestamp">Esperando...</span>
+          </div>
+          <div class="sub" style="margin-top: 22px;">
+            <span>Sincronizado</span>
+            <span class="muted">Firebase RTDB</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DETALLES ADICIONALES -->
+      <div style="margin-top: 20px;">
+        <div class="card glow">
+          <h3><span class="ico">📡</span> Información de la Conexión</h3>
+          <div class="kv">
+            <span class="k">Servidor:</span>
+            <span class="v">smartair-f352a-default-rtdb.firebaseio.com</span>
+          </div>
+          <div class="kv">
+            <span class="k">Ruta consultada:</span>
+            <span class="v">/monitor/actual</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Firebase SDK (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+  <!-- Lógica de la app -->
+  <script src="script.js"></script>
+</body>
+</html>
